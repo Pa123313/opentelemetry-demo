@@ -1,167 +1,66 @@
-<!-- markdownlint-disable-next-line -->
-# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry Demo
+🌌 Cloud-Native Observability: OpenTelemetry Microservices Demo
 
-[![Slack](https://img.shields.io/badge/slack-@cncf/otel/demo-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C03B4CWV4DA)
-[![Version](https://img.shields.io/github/v/release/open-telemetry/opentelemetry-demo?color=blueviolet)](https://github.com/open-telemetry/opentelemetry-demo/releases)
-[![Commits](https://img.shields.io/github/commits-since/open-telemetry/opentelemetry-demo/latest?color=ff69b4&include_prereleases)](https://github.com/open-telemetry/opentelemetry-demo/graphs/commit-activity)
-[![Downloads](https://img.shields.io/docker/pulls/otel/demo)](https://hub.docker.com/r/otel/demo)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=red)](https://github.com/open-telemetry/opentelemetry-demo/blob/main/LICENSE)
-[![Integration Tests](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml/badge.svg)](https://github.com/open-telemetry/opentelemetry-demo/actions/workflows/run-integration-tests.yml)
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/opentelemetry-demo)](https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-demo)
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B162%2Fgithub.com%2Fopen-telemetry%2Fopentelemetry-demo.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B162%2Fgithub.com%2Fopen-telemetry%2Fopentelemetry-demo?ref=badge_shield&issueType=license)
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B162%2Fgithub.com%2Fopen-telemetry%2Fopentelemetry-demo.svg?type=shield&issueType=security)](https://app.fossa.com/projects/custom%2B162%2Fgithub.com%2Fopen-telemetry%2Fopentelemetry-demo?ref=badge_shield&issueType=security)
-[![OpenSSF Scorecard for opentelemetry-demo](https://api.scorecard.dev/projects/github.com/open-telemetry/opentelemetry-demo/badge)](https://scorecard.dev/viewer/?uri=github.com/open-telemetry/opentelemetry-demo)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9247/badge)](https://www.bestpractices.dev/en/projects/9247)
+A comprehensive implementation of OpenTelemetry (OTel) across a distributed microservices architecture. This project showcases the ability to instrument, collect, and visualize the "Three Pillars of Observability" (Metrics, Logs, and Traces) in a complex, real-world environment.
 
-## Welcome to the OpenTelemetry Astronomy Shop Demo
+🚀 Project Overview
 
-This repository contains the OpenTelemetry Astronomy Shop, a microservice-based
-distributed system intended to illustrate the implementation of OpenTelemetry in
-a near real-world environment.
+This project utilizes the Astronomy Shop microservice suite to demonstrate how to achieve full-stack visibility. By integrating Prometheus, Grafana, and Locust, I’ve established a proactive monitoring system capable of detecting latency spikes and resource exhaustion.
 
-Our goals are threefold:
+🛠️ Observability & SRE Stack
 
-- Provide a realistic example of a distributed system that can be used to
-  demonstrate OpenTelemetry instrumentation and observability.
-- Build a base for vendors, tooling authors, and others to extend and
-  demonstrate their OpenTelemetry integrations.
-- Create a living example for OpenTelemetry contributors to use for testing new
-  versions of the API, SDK, and other components or enhancements.
+Instrumentation: OpenTelemetry SDKs (Java, Python, Go, Node.js).
 
-We've already made [huge
-progress](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md),
-and development is ongoing. We hope to represent the full feature set of
-OpenTelemetry across its languages in the future.
+Telemetry Collection: OpenTelemetry Collector (Contrib) for processing and exporting data.
 
-If you'd like to help (**which we would love**), check out our [contributing
-guidance](./CONTRIBUTING.md).
+Metrics & Storage: Prometheus for time-series data.
 
-If you'd like to extend this demo or maintain a fork of it, read our
-[fork guidance](https://opentelemetry.io/docs/demo/forking/).
+Visualization: Grafana (Custom Dashboards for Span Metrics and Service Health).
 
-## Quick start
+Load Testing: Locust (Distributed load generation to simulate real-user traffic).
 
-You can be up and running with the demo in a few minutes. Check out the docs for
-your preferred deployment method:
+Infrastructure: Kubernetes / Docker-Compose.
 
-- [Docker](https://opentelemetry.io/docs/demo/docker_deployment/)
-- [Kubernetes](https://opentelemetry.io/docs/demo/kubernetes_deployment/)
+📊 Performance Analysis & Insights
+1. Real-Time Distributed Tracing & Span Metrics
+I configured custom Grafana dashboards to monitor Service Latency (P95) and Mean Rate across 10+ microservices. This allows for immediate identification of "hot paths" in the distributed system.
 
-## Documentation
+<img width="1345" height="702" alt="span-metrics-analysis png" src="https://github.com/user-attachments/assets/63face1c-1a2c-4dd2-b09f-b5b25f563b76" />
 
-For detailed documentation, see [Demo Documentation][docs]. If you're curious
-about a specific feature, the [docs landing page][docs] can point you in the
-right direction.
 
-## Demos featuring the Astronomy Shop
+2. OTel Collector Health & Throughput
+Monitoring the OpenTelemetry Collector itself to ensure zero data loss. This dashboard tracks spans/sec and logs/sec being processed through the pipeline.
 
-We welcome any vendor to fork the project to demonstrate their services and
-adding a link below. The community is committed to maintaining the project and
-keeping it up to date for you.
+<img width="1347" height="634" alt="otel-collector-telemetry png" src="https://github.com/user-attachments/assets/d4429670-99fa-4865-af4b-ef06e5fdac2f" />
 
-|                           |                |                                  |
-|---------------------------|----------------|----------------------------------|
-| [AlibabaCloud LogService] | [Google Cloud] | [Parseable]                      |
-| [Amazon Web Services]     | [Grafana Labs] | [Sentry]                         |
-| [Apache Doris]            | [Guance]       | [ServiceNow Cloud Observability] |
-| [AppDynamics]             | [Honeycomb.io] | [SigNoz]                         |
-| [Aspecto]                 | [Instana]      | [SolarWinds Observability]       |
-| [Axiom]                   | [Kloudfuse]    | [Splunk]                         |
-| [Axoflow]                 | [Kopai]        | [Sumo Logic]                     |
-| [Azure Data Explorer]     | [Last9]        | [TelemetryHub]                   |
-| [Causely]                 | [Liatrio]      | [Teletrace]                      |
-| [ClickStack]              | [Logz.io]      | [Tinybird]                       |
-| [Coralogix]               | [New Relic]    | [Tracetest]                      |
-| [Dash0]                   | [Oodle]        | [Tsuga]                          |
-| [Datadog]                 | [OpenObserve]  | [Uptrace]                        |
-| [Dynatrace]               | [OpenSearch]   | [VictoriaMetrics]                |
-| [Elastic]                 | [Oracle]       |                                  |
 
-## Contributing
+3. Automated Load Testing
+Using Locust, I simulated concurrent user behavior to stress-test the /api/checkout and /api/cart endpoints, capturing failure rates and response times under load.
 
-To get involved with the project see our [CONTRIBUTING](CONTRIBUTING.md)
-documentation. Our [SIG Calls](CONTRIBUTING.md#join-a-sig-call) are every other
-Wednesday at 8:30 AM PST and anyone is welcome.
+<img width="1335" height="682" alt="locust-load-test-results png" src="https://github.com/user-attachments/assets/a21ee713-66b6-4ee3-839a-adf1891bc0c8" />
 
-### Maintainers
 
-- [Cyrille Le Clerc](https://github.com/cyrille-leclerc), Grafana Labs
-- [Juliano Costa](https://github.com/julianocosta89), Datadog
-- [Pierre Tessier](https://github.com/puckpuck), Honeycomb
-- [Roger Coll](https://github.com/rogercoll), Elastic
+4. Resource Utilization (SRE View)
+Monitoring CPU and Memory consumption per service (e.g., product-catalog, frontend) to establish performance baselines and right-size Kubernetes resource limits.
 
-For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
+<img width="1356" height="688" alt="service-resource-monitoring png" src="https://github.com/user-attachments/assets/ad07dbd7-b964-4f4f-bd84-329fcf537975" />
 
-### Approvers
 
-- [Cedric Ziel](https://github.com/cedricziel), Grafana Labs
-- [Mikko Viitanen](https://github.com/mviitane), Dynatrace
-- [Piotr Kie&#x142;kowicz](https://github.com/Kielek), Splunk
-- [Shenoy Pratik](https://github.com/ps48), AWS OpenSearch
+💡 Key Accomplishments
 
-For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
+Bottleneck Identification: Used Span Metrics to identify that the accounting service had a P95 latency of 15s during peak load.
 
-### Emeritus
+Unified Pipeline: Successfully routed logs and metrics through a single OTel Collector, reducing agent overhead on the infrastructure.
 
-- [Austin Parker](https://github.com/austinlparker)
-- [Carter Socha](https://github.com/cartersocha)
-- [Michael Maxwell](https://github.com/mic-max)
-- [Morgan McLean](https://github.com/mtwo)
-- [Penghan Wang](https://github.com/wph95)
-- [Reiley Yang](https://github.com/reyang)
-- [Ziqi Zhao](https://github.com/fatsheep9146)
+Stress Resilience: Verified system stability up to 50+ RPS with a 78% success rate on high-complexity transaction paths.
 
-For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+🛠️ How to Deploy
 
-### Thanks to all the people who have contributed
+Clone the Repo: git clone <repo-link>
 
-[![contributors](https://contributors-img.web.app/image?repo=open-telemetry/opentelemetry-demo)](https://github.com/open-telemetry/opentelemetry-demo/graphs/contributors)
+Launch Stack: docker-compose up -d (or kubectl apply -f ./k8s)
 
-[docs]: https://opentelemetry.io/docs/demo/
+Access Dashboards:
 
-<!-- Links for Demos featuring the Astronomy Shop section -->
+Grafana: http://localhost:8080/grafana
 
-[AlibabaCloud LogService]: https://github.com/aliyun-sls/opentelemetry-demo
-[Amazon Web Services]: https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/otel-demo-thegame/README.md
-[AppDynamics]: https://community.splunk.com/t5/AppDynamics-Knowledge-Base/How-to-observe-Kubernetes-deployment-of-OpenTelemetry-demo-app/ta-p/741454
-[Apache Doris]: https://github.com/apache/doris-opentelemetry-demo
-[Aspecto]: https://github.com/aspecto-io/opentelemetry-demo
-[Axiom]: https://play.axiom.co/axiom-play-qf1k/dashboards/otel.traces.otel-demo-traces
-[Axoflow]: https://axoflow.com/opentelemetry-support-in-more-detail-in-axosyslog-and-syslog-ng/
-[Azure Data Explorer]: https://github.com/Azure/Azure-kusto-opentelemetry-demo
-[Causely]: https://github.com/causely-oss/otel-demo
-[ClickStack]: https://github.com/ClickHouse/opentelemetry-demo
-[Coralogix]: https://coralogix.com/blog/configure-otel-demo-send-telemetry-data-coralogix
-[Dash0]: https://github.com/dash0hq/opentelemetry-demo
-[Datadog]: https://docs.datadoghq.com/opentelemetry/guide/otel_demo_to_datadog
-[Dynatrace]: https://www.dynatrace.com/news/blog/opentelemetry-demo-application-with-dynatrace/
-[Elastic]: https://github.com/elastic/opentelemetry-demo
-[Google Cloud]: https://github.com/GoogleCloudPlatform/opentelemetry-demo
-[Grafana Labs]: https://github.com/grafana/opentelemetry-demo
-[Guance]: https://github.com/GuanceCloud/opentelemetry-demo
-[Honeycomb.io]: https://github.com/honeycombio/opentelemetry-demo
-[Instana]: https://github.com/instana/opentelemetry-demo
-[Kloudfuse]: https://github.com/kloudfuse/opentelemetry-demo
-[Kopai]: https://github.com/kopai-app/opentelemetry-demo/tree/main/kopai
-[Last9]: https://last9.io/docs/integrations-opentelemetry-demo/
-[Liatrio]: https://github.com/liatrio/opentelemetry-demo
-[Logz.io]: https://logz.io/learn/how-to-run-opentelemetry-demo-with-logz-io/
-[New Relic]: https://github.com/newrelic/opentelemetry-demo
-[Oodle]: https://blog.oodle.ai/meet-oodle-unified-and-ai-native-observability/
-[OpenSearch]: https://github.com/opensearch-project/opentelemetry-demo
-[OpenObserve]: https://openobserve.ai/blog/opentelemetry-astronomy-shop-demo/
-[Oracle]: https://github.com/oracle-quickstart/oci-o11y-solutions/blob/main/knowledge-content/opentelemetry-demo
-[Parseable]: https://www.parseable.com/blog/open-telemetry-demo-with-parseable-a-complete-observability-setup
-[Sentry]: https://github.com/getsentry/opentelemetry-demo
-[ServiceNow Cloud Observability]: https://docs.lightstep.com/otel/quick-start-operator#send-data-from-the-opentelemetry-demo
-[SigNoz]: https://signoz.io/blog/opentelemetry-demo/
-[SolarWinds Observability]: https://github.com/solarwinds/opentelemetry-demo
-[Splunk]: https://github.com/signalfx/opentelemetry-demo
-[Sumo Logic]: https://www.sumologic.com/blog/common-opentelemetry-demo-application/
-[TelemetryHub]: https://github.com/TelemetryHub/opentelemetry-demo/tree/telemetryhub-backend
-[Teletrace]: https://github.com/teletrace/opentelemetry-demo
-[Tinybird]: https://github.com/tinybirdco/opentelemetry-demo
-[Tracetest]: https://github.com/kubeshop/opentelemetry-demo
-[Tsuga]: https://github.com/tsuga-dev/opentelemetry-demo
-[Uptrace]: https://github.com/uptrace/uptrace/tree/master/example/opentelemetry-demo
-[VictoriaMetrics]: https://github.com/VictoriaMetrics-Community/opentelemetry-demo
+Locust: http://localhost:8080/loadgen
